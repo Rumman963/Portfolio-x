@@ -4,7 +4,6 @@ import { SkillBar } from "@/components/skillsBar";
 import {
   FaReact,
   FaNodeJs,
-  FaGitAlt,
   FaGithub,
   FaHtml5,
   FaCss3Alt,
