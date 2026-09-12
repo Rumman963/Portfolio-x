@@ -1,5 +1,5 @@
 "use client"
-
+import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button"
 import { DotGridSpotlight } from "@/components/ui/dot-grid-spotlight";
 
@@ -16,15 +16,8 @@ export default function Home(){
 
 
 
-      <div className="bg-black text-white">
-        <Button size="lg" variant="default" 
-        onClick={() => alert("Clicked!")}>
-         Click Me
-       </Button>
-
 </div>
 
-      </div>
 
   )
 
