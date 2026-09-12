@@ -1,3 +1,4 @@
+import { FadeIn } from "@/components/fade";
 import {
   Card,
   CardContent,
@@ -67,6 +68,7 @@ export default function AboutPage() {
       </p>
 
       {/* Bio */}
+      <FadeIn>
       <Card className="bg-white/5 border-white/10 mb-8 hover:border-white/30 transition-colors">
         <CardHeader>
           <CardTitle className="text-white flex items-center gap-2">
@@ -85,8 +87,10 @@ export default function AboutPage() {
        </p>
       </CardContent>
       </Card>
+      </FadeIn>
 
       {/* Experience */}
+      <FadeIn delay={100}>
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
           <Briefcase size={22} className="text-white/70" />
@@ -118,8 +122,10 @@ export default function AboutPage() {
           </Card>
         ))}
       </div>
+      </FadeIn>
 
       {/* Education */}
+      <FadeIn delay={200}>
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
           <GraduationCap size={22} className="text-white/70" />
@@ -145,8 +151,10 @@ export default function AboutPage() {
           </Card>
         ))}
       </div>
+      </FadeIn>
 
       {/* Certifications */}
+      <FadeIn delay={300}>
       <div className="mb-8">
         <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
           <Award size={22} className="text-white/70" />
@@ -168,8 +176,10 @@ export default function AboutPage() {
           </Card>
         ))}
       </div>
+      </FadeIn>
 
       {/* Extracurricular */}
+      <FadeIn delay={400}>
       <div>
         <h2 className="text-2xl font-semibold text-white mb-4 flex items-center gap-2">
           <Sparkles size={22} className="text-white/70" />
@@ -185,6 +195,7 @@ export default function AboutPage() {
           </CardContent>
         </Card>
       </div>
+      </FadeIn>
     </section>
   );
 }

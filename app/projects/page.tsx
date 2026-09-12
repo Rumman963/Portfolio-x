@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { FadeIn } from "@/components/fade";
+
 import {
   Card,
   CardContent,
@@ -35,7 +37,8 @@ export default function ProjectsPage() {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
+        {projects.map((project ,index) => (
+           <FadeIn key={project.title} delay={index * 100}>
           <a
             key={project.title}
             href={project.liveUrl}
@@ -63,6 +66,7 @@ export default function ProjectsPage() {
               </CardContent>
             </Card>
           </a>
+          </FadeIn>
         ))}
       </div>
     </section>

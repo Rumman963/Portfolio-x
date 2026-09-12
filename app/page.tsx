@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ProfileImage } from "@/components/profile";
+import { DynamicGreeting } from "@/components/greeting";
 
 export default function Home() {
   return (
@@ -8,9 +9,7 @@ export default function Home() {
       <ProfileImage />
 
       <div className="text-center md:text-left">
-        <p className="text-sm text-white/50 mb-3 tracking-wide uppercase">
-          Hi, I&apos;m
-        </p>
+        <DynamicGreeting/>
 
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
           Mohd Rumman Khan

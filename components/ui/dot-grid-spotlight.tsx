@@ -1,65 +1,62 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
 export function DotGridSpotlight({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      container.style.setProperty("--x", `${x}px`);
-      container.style.setProperty("--y", `${y}px`);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   return (
-    <div
-      ref={containerRef}
-      className="relative min-h-screen w-full overflow-hidden bg-black"
-    >
-      {/* Dot grid */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-        }}
-      />
+    <div className="relative min-h-screen w-full overflow-hidden bg-black">
+      <div className="mesh-gradient" />
 
-      {/* Spotlight that follows cursor */}
-      <div
-        className="pointer-events-none absolute inset-0 transition-opacity duration-300"
-        style={{
-          background:
-            "radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(139,92,246,0.15), transparent 40%)",
-        }}
-      />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03] mix-blend-overlay noise" />
 
-      {/* Fade edges so it blends nicely */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 0%, black 90%)",
+            "radial-gradient(ellipse at center, transparent 0%, black 95%)",
         }}
       />
 
-      {/* Page content */}
       <div className="relative z-10">{children}</div>
+
+      <style jsx>{`
+  .mesh-gradient {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(at 15% 15%, rgba(139, 92, 246, 0.6) 0px, transparent 50%),
+      radial-gradient(at 85% 10%, rgba(59, 130, 246, 0.55) 0px, transparent 50%),
+      radial-gradient(at 10% 85%, rgba(236, 72, 153, 0.5) 0px, transparent 50%),
+      radial-gradient(at 90% 90%, rgba(16, 185, 129, 0.5) 0px, transparent 50%),
+      radial-gradient(at 50% 50%, rgba(99, 102, 241, 0.4) 0px, transparent 60%),
+      radial-gradient(at 65% 30%, rgba(251, 146, 60, 0.4) 0px, transparent 50%),
+      radial-gradient(at 30% 65%, rgba(250, 204, 21, 0.3) 0px, transparent 50%);
+    filter: blur(50px);
+    background-size: 200% 200%;
+    animation: meshMove 12s ease-in-out infinite;
+  }
+
+  @keyframes meshMove {
+    0% {
+      background-position: 0% 0%;
+    }
+    25% {
+      background-position: 60% 30%;
+    }
+    50% {
+      background-position: 100% 70%;
+    }
+    75% {
+      background-position: 30% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+`}</style>
+        
     </div>
   );
 }
